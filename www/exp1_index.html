@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Expo 1</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="themes/z33.min.css"/>
+<script type="text/javascript" src="jquery/jquery-1.8.2.min.js"></script>
+<script stype="text/javascript" src="phonegap.js"></script> 
+
+	<script type="text/javascript">
+		$(document).bind('mobileinit', function(){
+		  $.mobile.page.prototype.options.addBackBtn = true;
+		});
+	</script>
+
+	<script type="text/javascript" src="jquery/jquery.mobile-1.2.0.min.js"></script>
+	
+	<script src="jquery/jquery.imagesloaded.min.js"></script>
+	<script src="jquery/imgcache.js"></script>
+	
+	<script>
+		var startTest = function() {
+			$('body').imagesLoaded(function($images, $proper, $broken ) {
+
+				// see console output for debug info
+				ImgCache.options.debug = true;
+				ImgCache.options.usePersistentCache = true;
+	
+				ImgCache.init(function() {
+					// 1. cache images
+					for (var i = 0; i < $proper.length; i++) {
+						ImgCache.cacheFile($($proper[i]).attr('src'));
+					}
+					// 2. broken images get replaced
+					for (var i = 0; i < $broken.length; i++) {
+						ImgCache.useCachedFile($($broken[i]));
+					}
+
+				});
+			});
+		};
+
+		if (typeof(cordova) !== 'undefined') {
+			// cordova test
+			document.addEventListener('deviceready', startTest, false);
+		} else {
+			// normal browser test
+			$(document).ready(startTest);
+		}
+	</script>
+	
+	<link rel="stylesheet" href="themes/responsiveslide.css"/>
+	<script src="jquery/responsiveslides.min.js"></script>
+	<script>
+    $(function () {
+      $(".rslides").responsiveSlides({
+      auto: false, 
+      pager: false, 
+      nav: true, 
+      speed: 500, 
+      namespace: "callbacks"});
+	});
+	</script>
+	
+	<script>
+		$(document).bind("mobileinit", function(){
+  			$.mobile.listview.prototype.options.icon = false;
+			$.mobile.defaultPageTransition = "none";
+			$.mobile.allowCrossDomainPages = true;
+			$.mobile.metaViewportContent = 'width=device-width';
+		    $.event.special.swipe.horizontalDistanceThreshold = 25; 
+   			$.event.special.swipe.verticalDistanceThreshold = 80;
+    		$.event.special.swipe.scrollSupressionThreshold = 8;
+		});
+	</script>
+	
+	<script>
+	$('div.ui-page').live("swipeleft", function(){
+	var nextpage = $(this).next('div[data-role="page"]');
+	if (nextpage.length > 0) {
+	$.mobile.changePage(nextpage, {transition: "slide"}, false, true);
+	}
+	});
+	$('div.ui-page').live("swiperight", function(){
+	var prevpage = $(this).prev('div[data-role="page"]');
+	if (prevpage.length > 0) {
+	$.mobile.changePage(prevpage, {transition: "slide",
+	reverse: true}, true, true);
+	}
+	});
+	</script>
+	
+	<script type="text/javascript">
+  	function loadIndex(items){
+	   //Start off with an empty list every time to get the latest from server
+	   $('#indexList').empty();
+	   
+	   //add the index items as list
+	   $.each(items, function(i, index){
+		 $('#indexList').append(generateIndexLink(index));
+	   });
+
+	   //refresh the list view to show the latest changes
+	   $('#indexList').listview('refresh');
+	}
+	
+	$.getJSON("json/exp1_index.json", loadIndex)
+	
+	//creates a movie link list item
+	function generateIndexLink(index){
+
+	//debugger;
+		return '<li><a href="javascript:void(0)'
+		+ '" onclick="goToIndexDetailPage(\''
+		+ index.naam
+		+ '\',\''
+		+ index.kunstwerk
+		+ '\',\''
+		+ index.pagina.yt
+		+ '\',\''
+		+ index.pagina.nationaliteit
+		+ '\',\''
+		+ index.pagina.onderschrift
+		+ '\',\''
+		+ index.pagina.onderschrift1
+		+ '\',\''
+		+ index.pagina.video
+		+ '\',\''
+		+ index.pagina.tekst
+		+ '\',\''
+		+ index.img_hr +'\')"><img src="'
+		+ index.img_hr + '" /><h5>'
+		+ index.naam + '</h5><h6>'
+		+ index.kunstwerk + '</h6></a></li>';
+	}
+
+	function goToIndexDetailPage(indexNaam, indexKunstwerk, indexYT, indexNat, indexOS, indexOSA, indexVideo, indexTekst, indexImg){
+	if (indexVideo == "ja"){
+	//create the page html template
+	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp1en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
+				  + indexNaam + "(" +indexNat + ")</h1><h2>" + indexKunstwerk + "</h2><em>" + indexOS + "</em><div class='ui-grid-a my-breakpoint'><div class='ui-block-a'><div class='koloma'><div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'><img src='"
+				  + indexImg + "' alt=''></img><p class='caption'>"+ indexOSA + "<p></li></ul></div><ul class='tabs'><li><a href='" + indexYT +"' data-ajax='false'><img style='width: 35px; height: 23px;' src='images/video.png'/></a></li><br></ul></div></div><div class='ui-block-b'><div class='kolomb'>"
+				  + indexTekst +"</div></div></div></div></div>");		
+				  
+	//append the new page to the page container
+	indexPage.appendTo( $.mobile.pageContainer );
+
+	//go to the newly created page
+	$.mobile.changePage( indexPage );
+	
+	}else{
+	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp1en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
+				  + indexNaam + "(" +indexNat + ")</h1><h2>" + indexKunstwerk + "</h2><em>" + indexOS + "</em><div class='ui-grid-a my-breakpoint'><div class='ui-block-a'><div class='koloma'><div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'><img src='"
+				  + indexImg + "' alt=''></img><p class='caption'>"+ indexOSA + "<p></li></ul></div></div></div><div class='ui-block-b'><div class='kolomb'>"
+				  + indexTekst +"</div></div></div></div></div>");		
+	
+	//append the new page to the page container
+	indexPage.appendTo( $.mobile.pageContainer );
+
+	//go to the newly created page
+	$.mobile.changePage( indexPage );
+	}
+	}
+
+</script>
+  
+  <!-- /<script type="text/javascript">
+  	var pathIndex;
+	
+	function onFSSuccess(fileSystem) {
+		pathIndex = fileSystem.root.fullPath+'/Android/data/be.z33.mobile/exp1_index.json';
+	    fileSystem.root.getDirectory("Android/data/be.z33.mobile",{create:true},$.getJSON(pathIndex,loadIndex),onError);
+	}
+	
+	function loadIndex(items){
+	   //Start off with an empty list every time to get the latest from server
+	   $('#indexList').empty();
+	   
+	   //add the index items as list
+	   $.each(items, function(i, index){
+		 $('#indexList').append(generateIndexLink(index));
+	   });
+
+	   //refresh the list view to show the latest changes
+	   $('#indexList').listview('refresh');
+	}
+	
+	//creates a movie link list item
+	function generateIndexLink(index){
+
+	//debugger;
+		return '<li><a href="javascript:void(0)'
+		+ '" onclick="goToIndexDetailPage(\''
+		+ index.naam
+		+ '\',\''
+		+ index.kunstwerk
+		+ '\',\''
+		+ index.link
+		+ '\',\''
+		+ index.pagina.nationaliteit
+		+ '\',\''
+		+ index.pagina.onderschrift
+		+ '\',\''
+		+ index.pagina.onderschrift1
+		+ '\',\''
+		+ index.pagina.video
+		+ '\',\''
+		+ index.pagina.tekst
+		+ '\',\''
+		+ index.img +'\')"><img src="'
+		+ index.img + '" /><h5>'
+		+ index.naam + '</h5><h6>'
+		+ index.kunstwerk + '</h6></a></li>';
+	}
+
+	function goToIndexDetailPage(indexNaam, indexKunstwerk, indexLink, indexNat, indexOS, indexOSA, indexVideo, indexTekst, indexImg){
+	if (indexVideo == "ja"){
+	//create the page html template
+	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index_nl.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp1en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
+				  + indexNaam + " (" +indexNat + ")</h1><h2>" + indexKunstwerk + "</h2><em>" + indexOS + "</em><div class='ui-grid-a my-breakpoint'><div class='ui-block-a'><div class='koloma'><div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'><img src='"
+				  + indexImg + "' alt=''></img><p class='caption'>"+ indexOSA + "<p></li></ul></div><ul class='tabs'><li><a href='" + indexYT +"' data-ajax='false'><img style='width: 35px; height: 23px;' src='images/video.png'/></a></li><br></ul></div></div><div class='ui-block-b'><div class='kolomb'>"
+				  + indexTekst +"</div></div></div></div></div>");		
+				  
+	//append the new page to the page container
+	indexPage.appendTo( $.mobile.pageContainer );
+
+	//go to the newly created page
+	$.mobile.changePage( indexPage );
+	
+	}else{
+	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index_nl.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp1en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
+				  + indexNaam + " (" +indexNat + ")</h1><h2>" + indexKunstwerk + "</h2><em>" + indexOS + "</em><div class='ui-grid-a my-breakpoint'><div class='ui-block-a'><div class='koloma'><div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'><img src='"
+				  + indexImg + "' alt=''></img><p class='caption'>"+ indexOSA + "<p></li></ul></div></div></div><div class='ui-block-b'><div class='kolomb'>"
+				  + indexTekst +"</div></div></div></div></div>");		
+	
+	//append the new page to the page container
+	indexPage.appendTo( $.mobile.pageContainer );
+
+	//go to the newly created page
+	$.mobile.changePage( indexPage );
+	}
+	}
+	
+	function onError(e){
+	    console.log("ERROR");
+	    console.log(JSON.stringify(e));
+	}
+	
+	function onDeviceReady() {
+	    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);
+	}    
+	
+	function init() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+	}
+
+</script> -->
+</head>
+<body>
+
+<div data-role="page" id="kunstwerken_exp1" data-theme="a">
+<div data-role="header" class="ui-header ui-bar-a" role="banner" data-position="fixed" data-tap-toggle="false">
+	<div class="hd">
+		<a href="index_nl.html" data-ajax="false" title="Z33" class="Z33"><span style="display:none;" data-position="fixed">Z33</span></a>
+	<div class="taal">
+		<ul>
+		<li class="actief">NL</li>
+		<li>|</li>
+		<li><a href="exp1en_index.html" data-ajax="false">EN</a></li></ul>
+	</div>
+	</div>
+</div>
+<div data-role="content">	
+<ul data-role="listview" id="indexList" data-theme="c"></ul>
+</div>
+<div data-theme="a" data-role="footer" class="ui-footer ui-bar-d" role="banner" data-position="fixed" data-tap-toggle="false">
+	<div data-role="navbar" data-id="foo1" data-position="fixed" data-tap-toggle="false">
+		<ul>
+			<li><a href="#kunstwerken_exp1" class="ui-btn-active ui-state-persist" id="kwd"><div id="kw">Kunstenaars</div></a></li>
+			<li><a href="exp1_info.html" data-ajax="false" id="tsd"><div id="ts">Tentoonstelling</div></a></li>
+			<li><a href="exp1_over.html" data-ajax="false" id="z33d"><div id="z33">Over Z33</div></a></li>
+			<li><a href="exp1_agenda.html" data-ajax="false" id="ad"><div id="a">Agenda</div></a></li>
+		</ul>
+	</div>
+</div>
+</div>
+</body>
+</html>

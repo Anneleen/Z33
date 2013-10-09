@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes"/>
+	
+	<title>Expo 1</title>	
+	<link rel="stylesheet" href="themes/z33.min.css"/>
+	<script type="text/javascript" src="jquery/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery.mobile-1.2.0.min.js"></script>
+	<script stype="text/javascript" src="phonegap.js"></script> 
+	
+	<script src="jquery/jquery.imagesloaded.min.js"></script>
+	<script src="jquery/imgcache.js"></script>
+	
+	<script>
+		var startTest = function() {
+			$('body').imagesLoaded(function($images, $proper, $broken ) {
+
+				// see console output for debug info
+				ImgCache.options.debug = true;
+				ImgCache.options.usePersistentCache = true;
+	
+				ImgCache.init(function() {
+					// 1. cache images
+					for (var i = 0; i < $proper.length; i++) {
+						ImgCache.cacheFile($($proper[i]).attr('src'));
+					}
+					// 2. broken images get replaced
+					for (var i = 0; i < $broken.length; i++) {
+						ImgCache.useCachedFile($($broken[i]));
+					}
+
+				});
+			});
+		};
+
+		if (typeof(cordova) !== 'undefined') {
+			// cordova test
+			document.addEventListener('deviceready', startTest, false);
+		} else {
+			// normal browser test
+			$(document).ready(startTest);
+		}
+	</script>
+	
+	<link rel="stylesheet" href="themes/responsiveslide.css">
+	<script type="text/javascript" src="jquery/responsiveslides.min.js"></script>
+	<script>
+    $(function () {
+      $(".rslides").responsiveSlides({
+      auto: false, 
+      pager: false, 
+      nav: true, 
+      speed: 500, 
+      namespace: "callbacks"});
+	});
+  </script>
+
+	<script>
+		$(document).bind("mobileinit", function(){
+  			$.mobile.listview.prototype.options.icon = false;
+			$.mobile.defaultPageTransition = "none";
+			$.mobile.allowCrossDomainPages = true;
+			$.mobile.metaViewportContent = 'width=device-width';
+		});		
+	</script>
+	
+</head> 
+<body> 
+<div data-role="page">
+<div data-theme="a" id="overz33">
+
+	<div data-role="header" class="ui-header ui-bar-a" role="banner" data-position="fixed" data-tap-toggle="false">
+	<div class="hd">
+		<a href="index_en.html" data-ajax="false" title="Z33" class="Z33_en"><span style="display:none;" data-position="fixed">Z33</span></a>
+	<div class="taal">
+		<ul>
+		<li class="actief">EN</a></li>
+		<li>|</li>
+		<li><a href="exp1_index.html" data-ajax="false">NL</a></li></ul>
+	</div>
+	</div>
+	</div><!-- /header -->
+
+
+	<div data-theme="a" data-role="content">
+	
+	<div class="ui-grid-a my-breakpoint"><div class="ui-block-a">
+	<div class="lijn"><h3>About Z33</h3></div>
+	<div class="koloma">
+	 <div class="callbacks_container">
+      <ul class="rslides">
+      	<li><img src="images/Z33_BEGI.jpg" alt="" style="max-height: 764px; max-width: 509px;"><p class="caption">Z33, photo: Kristof Vrancken / Z33</p></li>
+      </ul>
+    </div></div></div>
+	
+	<div class="ui-block-b" style="margin-top: 23px;">
+	<div class="kolomb">
+		<p>Z33 is <b>a house for contemporary art</b>. Since 2002, Z33 has been organising <b>projects and exhibitions that encourage visitors to see everyday things in a new way</b>. A unique laboratory and a meeting place for experimentation and innovation, this is the place to be when it comes to unique exhbitions of contemporary art and design. The name Z33 comes from its location, Zuivelmarkt 33, the site of the historical beguinage in the city of Hasselt.</p><p>Z33 does not have a permanent collection of its own, but rather an <b>ongoing programme of temporary exhibitions</b>. Each year, Z33 presents three large and three smaller exhibition projects. These exhibitions always have a strong social orientation, addressing <b>topical themes from various artistic standpoints with a critical eye</b> (e.g. Designing Critical Design, 2007; 1% Water, 2008; Thomas Lommée OpenStructures, 2009; Design by Performance, 2010; Alter Nature, 2010; Architecture of Fear, 2011). Each project combines an exhibition with an extensive programme of related events.</p><p>In addition to exhibitions, Z33 organises <b>artistic projects in public spaces</b>. These large-scale projects bring contemporary art out into the public in Belgian Limburg. The first project in this series is pit – art in the public space of Borgloon-Heers.</p>
+		<p>Z33 also serves as <b>curator for exhibitions by external parties</b>, such as Emmy+Gijs+Aldo in the the Zuiderzeemuseum in Enkhuizen, Food Forward in Stroom Den Haag, the Cabinet of Curiosities from Belgium for Europe for the cabinet of the European Council president, Herman Van Rompuy and The Machine in C-Mine Genk.</p>
+		<p>For each exhibition, Z33 develops a <b>tailored programme for families, teachers, teenagers and children</b>, aimed at individuals as well as groups.</p>
+	</div></div>
+	</div>
+	</div><!-- /content -->
+
+	<div data-theme="a" data-role="footer" class="ui-footer ui-bar-d" role="banner" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar" data-id="foo1" data-position="fixed" data-tap-toggle="false">
+		<ul>
+			<li><a href="exp1en_index.html" data-ajax="false" id="kwd"><div id="kw">Artists</div></a></li>
+			<li><a href="exp1en_info.html" data-ajax="false" id="tsd"><div id="ts">Exposition</div></a></li>
+			<li><a href="#overz33" class="ui-btn-active ui-state-persist" id="z33d"><div id="z33">About Z33</div></a></li>
+			<li><a href="exp1en_agenda.html" data-ajax="false" id="ad"><div id="a">Agenda</div></a></li>
+		</ul>
+	</div><!-- /navbar -->
+	</div><!-- /footer -->
+</div><!-- /page overz33 -->
+</div><!-- /page -->
+
+</body>
+</html>
+
