@@ -54,7 +54,7 @@ var knownfiles = [];
 
 //Loaded my file system, now let's get a directory entry for where I'll store my crap    
 function onFSSuccess(fileSystem) {
-    fileSystem.root.getDirectory("Android/data/be.z33.mobile",{create:true},gotDir,onError);
+    fileSystem.root.getDirectory("be.z33.mobile",{create:true},gotDir,onError);
 }
 
 //The directory entry callback
@@ -90,7 +90,7 @@ function onDeviceReady() {
 
 function appReady(){
     $("#status").html("Ready to check remote files...");
-    $.get("http://mllsdemode.be/Z33/download.json", {}, function(res) {
+    $.get("http://mllsdemode.be/Z33/downloadmac.json", {}, function(res) {
         if (res.length > 0) {
             $("#status").html("Going to sync some images...");
             for (var i = 0; i < res.length; i++) {

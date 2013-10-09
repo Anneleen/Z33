@@ -3536,33 +3536,36 @@ display:inline-block
 }
 
 /*HEADER*/
+.ui-header{
+	height: 64px;
+}
 
 .Z33{
 	background: url("../images/logonl.jpg") no-repeat center center;  
-	background-size: 93px 59px;
-	width: 93px;
-	height: 59px;
+	background-size: 70px 40px;
+	width: 70px;
+	height: 40px;
 	text-indent: -999px;
 	display: block;
 	padding: 0;
-	margin: 5px auto;
+	margin: 22px auto 2px auto;
 }
 .Z33_en{
 	background: url("../images/logoen.jpg") no-repeat center center;  
-	background-size: 102px 59px;
-	width: 102px;
-	height: 59px;
+	background-size: 63px 40px;
+	width: 63px;
+	height: 40px;
 	text-indent: -999px;
 	display: block;
 	padding: 0;
-	margin: 5px auto;
+	margin: 20px auto 0 auto;
 }
 
 .taal{
 	color: #231F20;
-	margin: -35px 15px 0 0;
+	margin: -40px 15px 0 0;
 	font-weight: normal;
-	padding: 0 0 5px;
+	padding: 0;
 }
 .taal ul{
 	color: #231F20;
@@ -3695,107 +3698,112 @@ a{
 
 /*FOOTER*/
 
+.ui-navbar{
+	max-height: 49px;
+	}
 #kwd{
 	background: #231F20 url("../images/kw.png") no-repeat center top;
 	color: #fff;
-	background-size: 31px 35px;
-	height: 50px;
-	border: 7px solid #231F20;
+	background-size: 30px 30px;
+	height: 49px;
+	border-top: 3px solid #231F20;
 	text-decoration: none;
 }
 
 #kwd.ui-btn-active{
 	background: #fff url("../images/kwd.png") no-repeat center top;
-	background-size: 31px 35px;
+	background-size: 30px 30px;
 	color: #231F20;
-	border: 7px solid #fff;
+	border-top: 3px solid #fff;
 }
 
 #kw{
-	margin: 30px 0 0 0;
+	margin: 20px 0 0 0;
 	letter-spacing: 0.1em;
 }
 
 #tsd{
 	background: #231F20 url("../images/ts.png") no-repeat center top;
 	color: #fff;
-	background-size: 31px 35px;
-	height: 50px;
-	border: 7px solid #231F20;
+	background-size: 30px 30px;
+	height: 49px;
+	border-top: 3px solid #231F20;
 	text-decoration: none;
 }
 
 #tsd.ui-btn-active{
 	background: #fff url("../images/tsd.png") no-repeat center top;
-	background-size: 31px 35px;
+	background-size: 30px 30px;
 	color: #231F20;
-	border: 7px solid #fff;
+	border-top: 3px solid #fff;
 }
 
 #ts{
-	margin: 30px 0 0 0;
+	margin: 20px 0 0 0;
 	letter-spacing: 0.1em;
 }
 
 #z33d{
 	background: #231F20 url("../images/z33.png") no-repeat center top;
-	background-size: 48px 35px;
+	background-size: 42px 30px;
 	color: #fff;
-	height: 50px;
-	border: 7px solid #231F20;
+	height: 49px;
+	border-top: 3px solid #231F20;
 	text-decoration: none;
 }
 
 #z33d.ui-btn-active{
 	background: #fff url("../images/z33d.png") no-repeat center top;
-	background-size: 48px 35px;
+	background-size: 42px 30px;
 	color: #231F20;
-	border: 7px solid #fff;
+	border-top: 3px solid #fff;
 }
 
 #z33{
-	margin: 30px 0 0 0;
+	margin: 20px 0 0 0;
 	letter-spacing: 0.1em;
 }
 
 #ad{
 	background: #231F20 url("../images/a.png") no-repeat center top;
-	background-size: 33px 35px;
+	background-size: 30px 30px;
 	color: #fff;
-	height: 50px;
-	border: 7px solid #231F20;
+	height: 49px;
+	border-top: 3px solid #231F20;
 	text-decoration: none;
 }
 
 #ad.ui-btn-active{
 	background: #fff url("../images/ad.png") no-repeat center top;
-	background-size: 33px 35px;
+	background-size: 30px 30px;
 	color: #231F20;
-	border: 7px solid #fff;
+	border-top: 3px solid #fff;
 }
 
 #a{
-	margin: 30px 0 0 0;
+	margin: 20px 0 0 0;
 	letter-spacing: 0.1em;
 }
 
 #upd{
 	background: #231F20 url("../images/up.png") no-repeat center top;
+	background-size: 30px 30px;
 	color: #fff;
-	height: 50px;
-	border: 7px solid #231F20;
+	height: 49px;
+	border-top: 3px solid #231F20;
 	text-decoration: none;
 	width: 100%;
 }
 
 #upd.ui-btn-active{
 	background: #fff url("../images/upd.png") no-repeat center top;
+	background-size: 30px 30px;
 	color: #231F20;
-	border: 7px solid #fff;
+	border-top: 3px solid #fff;
 }
 
 #up{
-	margin: 30px 0 0 0;
+	margin: 20px 0 0 0;
 	letter-spacing: 0.1em;
 }
 
@@ -4021,6 +4029,7 @@ table tr td p, table tr td i{
 	#tsd, #kwd, #z33d, #ad, #upd, #tsd.ui-btn-active, #kwd.ui-btn-active, #z33d.ui-btn-active, #ad.ui-btn-active, #upd.ui-btn-active{
 	text-indent: -999px;
 	background-position:center center;
+	border-top: none;
 	}
     .my-breakpoint .ui-block-a, .my-breakpoint .ui-block-b {
         width: 100%;
