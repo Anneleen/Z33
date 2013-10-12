@@ -165,8 +165,8 @@
 	var pathAgenda;
 
 	function onFSSuccess(fileSystem) {
-		pathAgenda = fileSystem.root.fullPath+'/Android/data/be.z33.mobile/exp1en_agenda.json';
-		fileSystem.root.getDirectory("Android/data/be.z33.mobile",{create:true},loadAgendas,onError);
+		pathAgenda = fileSystem.root.fullPath+'/be.z33.mobile/exp1en_agenda.json';
+		fileSystem.root.getDirectory("be.z33.mobile",{create:true},loadAgendas,onError);
 	}
 
 	function loadAgendas(){
@@ -278,8 +278,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 	<div data-theme="a" data-role="content">
 	
-	<div class='ui-grid-a my-breakpoint'><div class='lijn'><h3>Upcoming events</h3></div>
-	<div class='ui-block-a'><table id="agenda1A"></table></div>
+	<div class='ui-grid-a my-breakpoint'>
+	<div class='ui-block-a'><div class='lijn'><h3>Upcoming events</h3></div><table id="agenda1A"></table></div>
 	<div class='ui-block-b'><table id="agenda1B"></table></div>
 	</div>
 	</div><!-- /content -->

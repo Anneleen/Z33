@@ -170,8 +170,8 @@
   	var pathIndex;
 	
 	function onFSSuccess(fileSystem) {
-		pathIndex = fileSystem.root.fullPath+'/Android/data/be.z33.mobile/exp2en_index.json';
-	    fileSystem.root.getDirectory("Android/data/be.z33.mobile",{create:true},$.getJSON(pathIndex,loadIndex),onError);
+		pathIndex = fileSystem.root.fullPath+'/be.z33.mobile/exp2en_index.json';
+	    fileSystem.root.getDirectory("be.z33.mobile",{create:true},$.getJSON(pathIndex,loadIndex),onError);
 	}
 	
 	function loadIndex(items){

@@ -99,6 +99,7 @@ function appReady(){
                     var dlPath = DATADIR.fullPath + "/" + res[i];
 console.log("downloading crap to " + dlPath);
 ft.download("http://mllsdemode.be/Z33/" + escape(res[i]), dlPath, function(e){
+window.location = "index_nl.html"
 console.log("Successful download of "+e.fullPath);
 }, onError);
                
@@ -115,10 +116,14 @@ document.addEventListener("deviceready", onDeviceReady, true);
 </script>
 
 <script>
-var delay = 6000;
-window.setTimeout(function() {
-    window.location = "index_nl.html";
-}, 5000);
+document.addEventListener("deviceready", offlineReady, false);
+
+    function offlineReady() {
+        var networkState = navigator.network.connection.type;
+     	if (networkState == Connection.UNKNOWN || networkState == Connection.NONE || networkState == Connection.ETHERNET || networkState == Connection.CELL_2G){
+			window.location = "index_nl.html";
+		}
+	}
 </script>
 
 </head> 

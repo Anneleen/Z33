@@ -103,8 +103,8 @@
 	var pathHome;
 
 	function onFSSuccess(fileSystem) {
-	pathHome = fileSystem.root.fullPath+'/Android/data/be.z33.mobile/home.json';
-    fileSystem.root.getDirectory("Android/data/be.z33.mobile",{create:true},loadHome,onError);
+	pathHome = fileSystem.root.fullPath+'/be.z33.mobile/home.json';
+    fileSystem.root.getDirectory("be.z33.mobile",{create:true},loadHome,onError);
 	}
 
 	function loadHome() {
