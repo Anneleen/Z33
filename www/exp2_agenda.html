@@ -86,17 +86,14 @@
 	</script>
 	
 	<script>
-	$(document).ready(function() {
-	var links = document.getElementsByTagName('a');
-	var len = links.length;
-
-	for(var i=0; i<len; i++)
-	{
-		links[i].addEventListener('click', function(e){
-			window.open(this.href, '_blank', 'location=yes');
-			e.preventDefault();
-		});
-	}
+	$(document).on('click', 'a[href^=http], a[href^=https]', function(e){
+ 
+	e.preventDefault();
+	var $this = $(this);
+	var target = $this.data('inAppBrowser') || '_blank';
+	 
+	window.open($this.attr('href'), target, 'location=no');
+	});
 	</script>
 	
 	<script>
