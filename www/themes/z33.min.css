@@ -1145,7 +1145,7 @@ zoom:1
 
 .ui-header .ui-btn-left,.ui-header .ui-btn-right,.ui-footer .ui-btn-left,.ui-footer .ui-btn-right{
 position:absolute;
-top:27px
+top:0;
 }
 
 .ui-header .ui-btn-left,.ui-footer .ui-btn-left{
