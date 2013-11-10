@@ -1,14 +1,16 @@
-<!DOCTYPE html> 
+﻿<!DOCTYPE html> 
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=2.0, user-scalable=yes"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
 	
-	<title>Overzicht tentoonstellingen</title>
+	<title>Expo 1</title>
 	<link rel="stylesheet" href="themes/z33.min.css"/>
 	<script type="text/javascript" src="jquery/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="jquery/jquery.mobile-1.2.0.min.js"></script>
 	<script stype="text/javascript" src="phonegap.js"></script> 
+	<script type="text/javascript" src="jquery/video.js"></script>
+	<script type="text/javascript" src="jquery/video_exp1.js"></script>
 	
 	<script src="jquery/jquery.imagesloaded.min.js"></script>
 	<script src="jquery/imgcache.js"></script>
@@ -44,104 +46,127 @@
 		}
 	</script>
 	
-	<link rel="stylesheet" href="themes/responsiveslide.css">
-	<script type="text/javascript" src="jquery/responsiveslides.min.js"></script>
+	<link rel="stylesheet" href="themes/responsiveslide.css"/>
+	<script src="jquery/responsiveslides.min.js"></script>
+	<script>
+    $(function () {
+      $(".rslides").responsiveSlides({
+      auto: false, 
+      pager: false, 
+      nav: true, 
+      speed: 500, 
+      namespace: "callbacks"});
+	});
+	</script>
 	
-<script type="text/javascript" charset="utf-8">
-//Global instance of DirectoryEntry for our data
-var DATADIR;
-var knownfiles = [];    
+	<script>
+	$('.link').live('tap', function() {
+    url = $(this).attr("rel");   
+    loadURL(url);
+	});
 
-//Loaded my file system, now let's get a directory entry for where I'll store my crap    
-function onFSSuccess(fileSystem) {
-    fileSystem.root.getDirectory("be.z33.mobile",{create:true},gotDir,onError);
-}
+	function loadURL(url){
+    navigator.app.loadUrl(url, { openExternal:true });
+    return false;
+	}
+	</script>
 
-//The directory entry callback
-function gotDir(d){
-    console.log("got dir");
-    DATADIR = d;
-    var reader = DATADIR.createReader();
-    reader.readEntries(function(d){
-        gotFiles(d);
-        appReady();
-    },onError);
-}
+	<script>
+		$(document).bind("mobileinit", function(){
+  			$.mobile.listview.prototype.options.icon = false;
+			$.mobile.defaultPageTransition = "none";
+			$.mobile.allowCrossDomainPages = true;
+			$.mobile.metaViewportContent = 'width=device-width';
+		    $.event.special.swipe.horizontalDistanceThreshold = 25; 
+   			$.event.special.swipe.verticalDistanceThreshold = 80;
+    		$.event.special.swipe.scrollSupressionThreshold = 8;
+		});
+	</script>
+	
+	<script>
+	$('div.ui-page').live("swipeleft", function(){
+	var nextpage = $(this).next('div[data-role="page"]');
+	if (nextpage.length > 0) {
+	$.mobile.changePage(nextpage, {transition: "slide"}, false, true);
+	}
+	});
+	$('div.ui-page').live("swiperight", function(){
+	var prevpage = $(this).prev('div[data-role="page"]');
+	if (prevpage.length > 0) {
+	$.mobile.changePage(prevpage, {transition: "slide",
+	reverse: true}, true, true);
+	}
+	});
+	</script>
+	
+	<script>
+	var pathHome;
 
-//Result of reading my directory
-function gotFiles(entries) {
-    console.log("The dir has "+entries.length+" entries.");
-for (var i=0; i<entries.length; i++) {
-console.log(entries[i].name+' dir? '+entries[i].isDirectory);
-        knownfiles.push(entries[i].name);
-}
-}
+	function onFSSuccess(fileSystem) {
+	pathHome = fileSystem.root.fullPath+'/be.z33.mobile/home.json';
+    fileSystem.root.getDirectory("be.z33.mobile",{create:true},loadHome,onError);
+	}
 
-function onError(e){
+	function loadHome() {
+	var request = new XMLHttpRequest();
+	request.open("GET", pathHome, true);
+	request.onreadystatechange = function() {//Call a function when the state changes.
+	if (request.readyState == 4) {
+	  if (request.status == 200 || request.status == 0) {
+	  
+	  var home = JSON.parse(request.responseText);
+	  var data = "<table cellspacing='0'>";
+	  for (i = 0; i < home.length; i++) {
+		data += "<td>";
+		data += "<a data-ajax='false' href='" + home[i].link + "'/>";
+		data += "<figure><img style='max-width: 360px; max-height: 540px;' src='" + home[i].img_hr + "'/>";
+		data += "<figcaption>" + home[i].expo + "<br><em>";
+		data += home[i].datum + "</em></figcaption></figure></a></td>";
+	  }
+	  data += "</table>";
+	  var twitter = document.getElementById("home");
+	  twitter.innerHTML = data;
+	  }
+	}
+	}
+		console.log("asking for home");
+		request.send();
+	}
+
+	function onError(e){
     console.log("ERROR");
     console.log(JSON.stringify(e));
-}
-
-function onDeviceReady() {
-    //what do we have in cache already?
-    $("#status").html("Checking your local cache....");    
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);  
-}
-
-function appReady(){
-    $("#status").html("Ready to check remote files...");
-    $.get("http://mllsdemode.be/Z33/downloadmac.json", {}, function(res) {
-        if (res.length > 0) {
-            $("#status").html("Going to sync some images...");
-            for (var i = 0; i < res.length; i++) {
-                    console.log("need to download " + res[i]);
-                    var ft = new FileTransfer();
-                    var dlPath = DATADIR.fullPath + "/" + res[i];
-console.log("downloading crap to " + dlPath);
-ft.download("http://mllsdemode.be/Z33/" + escape(res[i]), dlPath, function(e){
-window.location = "index_nl.html"
-console.log("Successful download of "+e.fullPath);
-}, onError);
-               
-            }
-        }
-        $("#status").html("");
-    }, "json");
-
-}
-
-function init() {
-document.addEventListener("deviceready", onDeviceReady, true);
-}
-</script>
-
-<script>
-document.addEventListener("deviceready", offlineReady, false);
-
-    function offlineReady() {
-        var networkState = navigator.network.connection.type;
-     	if (networkState == Connection.UNKNOWN || networkState == Connection.NONE || networkState == Connection.ETHERNET || networkState == Connection.CELL_2G){
-			window.location = "index_nl.html";
-		}
 	}
-</script>
 
-</head> 
-<body onload="init();"> 
-<div data-role="page">
+	function onDeviceReady() {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);
+	}    
 
-<div data-theme="a">
+	function init() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+	}
+	</script>
+		
+</head>
+
+<body onload="init();">
+<div data-theme="a" id="indexexpo" data-role="page" data-url="indexexpo">
 
 	<div data-role="header" class="ui-header ui-bar-a" role="banner" data-position="fixed" data-tap-toggle="false">
 	<div class="hd">
-		<a href="tst.html" data-ajax="false" title="Z33" class="Z33"><span style="display:none;" data-position="fixed">Z33</span></a>
+		<a href="index.html" data-ajax="false" title="Z33" class="Z33"><span style="display:none;" data-position="fixed">Z33</span></a>
 	</div>
 	</div><!-- /header -->
 
 	<div data-theme="a" data-role="content">
+	
+	<div class="iexpo">
+	<table id="home">
+	</table>
+	</div>
+	
 	</div><!-- /content -->
 	
-</div><!-- /page -->
 </div>
 </body>
 </html>
