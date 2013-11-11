@@ -100,6 +100,6 @@
 	<access origin="http://flickr.com" subdomains="true" />
     <access origin="http://api.flickr.com" subdomains="true" />
     <access origin="http://staticflickr.com" subdomains="true" />
-	<access origin="http://www.raymondcamden.com/" />
+	<access origin="http://www.raymondcamden.com/" subdomains="true" />
 
 </widget>
