@@ -92,7 +92,7 @@
 
 	//Loaded my file system, now let's get a directory entry for where I'll store my crap    
 	function onFSSuccess(fileSystem) {
-		fileSystem.root.getDirectory("be.z33.mobile",{create:true},gotDir,onError);
+		fileSystem.root.getDirectory("com.camden.imagedownloaddemo",{create:true},gotDir,onError);
 	}
 
 	//The directory entry callback
@@ -112,7 +112,13 @@
 	for (var i=0; i<entries.length; i++) {
 	console.log(entries[i].name+' dir? '+entries[i].isDirectory);
 			knownfiles.push(entries[i].name);
+			renderPicture(entries[i].fullPath);
 	}
+	}
+
+	function renderPicture(path){
+		$("#photos").append("<img src='file://"+path+"'>");
+		console.log("<img src='file://"+path+"'>");
 	}
 
 	function onError(e){
@@ -128,7 +134,7 @@
 
 	function appReady(){
 		$("#status").html("Ready to check remote files...");
-		$.get("http://mllsdemode.be/Z33/downloadmac.json", {}, function(res) {
+		$.get("http://www.mllsdemode.be/Z33/down_load.json", {}, function(res) {
 			if (res.length > 0) {
 				$("#status").html("Going to sync some images...");
 				for (var i = 0; i < res.length; i++) {
@@ -136,8 +142,9 @@
 						console.log("need to download " + res[i]);
 						var ft = new FileTransfer();
 						var dlPath = DATADIR.fullPath + "/" + res[i];
-						ft.download("http://mllsdemode.be/Z33/" + escape(res[i]), dlPath, function(e){
-							window.location = "index_nl.html";
+						console.log("downloading crap to " + dlPath);
+						ft.download("http://www.mllsdemode.be/Z33/" + escape(res[i]), dlPath, function(e){
+							renderPicture(e.fullPath);
 							console.log("Successful download of "+e.fullPath);
 						}, onError);
 					}
@@ -153,33 +160,14 @@
 	}
 	</script> 
 	
-	<script>
-	document.addEventListener("deviceready", offlineReady, false);
-
-		function offlineReady() {
-			var networkState = navigator.network.connection.type;
-			if (networkState == Connection.UNKNOWN || networkState == Connection.NONE || networkState == Connection.ETHERNET || networkState == Connection.CELL_2G){
-				window.location = "index_nl.html";
-			}
-		}
-	</script>
-	
 </head>
 
 <body onload="init();">
+<h2>Image Download Demo</h2>
 
-<div data-role="page"><div data-theme="a">
+<div id="status"></div>
 
-	<div data-role="header" class="ui-header ui-bar-a" role="banner" data-position="fixed" data-tap-toggle="false">
-	<div class="hd">
-		<a href="tst.html" data-ajax="false" title="Z33" class="Z33"><span style="display:none;" data-position="fixed">Z33</span></a>
-	</div>
-	</div><!-- /header -->
-
-	<div data-theme="a" data-role="content">
-	</div><!-- /content -->
-	
-</div></div><!-- /page -->
+<div id="photos"></div>
 
 </body>
 </html>
