@@ -112,13 +112,7 @@
 	for (var i=0; i<entries.length; i++) {
 	console.log(entries[i].name+' dir? '+entries[i].isDirectory);
 			knownfiles.push(entries[i].name);
-			renderPicture(entries[i].fullPath);
 	}
-	}
-
-	function renderPicture(path){
-		$("#photos").append("<img src='file://"+path+"'>");
-		console.log("<img src='file://"+path+"'>");
 	}
 
 	function onError(e){
@@ -142,9 +136,8 @@
 						console.log("need to download " + res[i]);
 						var ft = new FileTransfer();
 						var dlPath = DATADIR.fullPath + "/" + res[i];
-						console.log("downloading crap to " + dlPath);
 						ft.download("http://www.mllsdemode.be/Z33/" + escape(res[i]), dlPath, function(e){
-							renderPicture(e.fullPath);
+							window.location = "index_nl.html"
 							console.log("Successful download of "+e.fullPath);
 						}, onError);
 					}
