@@ -152,15 +152,34 @@
 	document.addEventListener("deviceready", onDeviceReady, true);
 	}
 	</script> 
+	<script>
+	document.addEventListener("deviceready", offlineReady, false);
+
+		function offlineReady() {
+			var networkState = navigator.network.connection.type;
+			if (networkState == Connection.UNKNOWN || networkState == Connection.NONE || networkState == Connection.ETHERNET || networkState == Connection.CELL_2G){
+				window.location = "index_nl.html";
+			}
+		}
+	</script>
 	
 </head>
 
 <body onload="init();">
-<h2>Image Download Demo</h2>
+<div data-role="page">
 
-<div id="status"></div>
+<div data-theme="a">
 
-<div id="photos"></div>
+	<div data-role="header" class="ui-header ui-bar-a" role="banner" data-position="fixed" data-tap-toggle="false">
+	<div class="hd">
+		<a href="tst.html" data-ajax="false" title="Z33" class="Z33"><span style="display:none;" data-position="fixed">Z33</span></a>
+	</div>
+	</div><!-- /header -->
 
+	<div data-theme="a" data-role="content">
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+</div>
 </body>
 </html>
