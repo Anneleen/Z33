@@ -134,7 +134,7 @@
 
 	function appReady(){
 		$("#status").html("Ready to check remote files...");
-		$.get("http://www.mllsdemode.be/Z33/down_load.json", {}, function(res) {
+		$.get("http://www.mllsdemode.be/Z33/download.json", {}, function(res) {
 			if (res.length > 0) {
 				$("#status").html("Going to sync some images...");
 				for (var i = 0; i < res.length; i++) {
