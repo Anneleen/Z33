@@ -97,82 +97,6 @@
 	</script>
 	
 	<script>
-	function loadAgendaA() {
-	
-	var request = new XMLHttpRequest();
-	request.open("GET", "json/exp1en_agenda.json", true);
-	request.onreadystatechange = function() {//Call a function when the state changes.
-	if (request.readyState == 4) {
- 		if (request.status == 200 || request.status == 0) {
-  
-  	var agenda = JSON.parse(request.responseText);
-  	var data = "<table class='one'>";
-  	for (i = 0; i < agenda.length; i++) {
-  		if (agenda[i].rij == "A") {
-			if (agenda[i].inhoud == "nee") {
-    		data += "<tr><td><a target='_blank' href='" + agenda[i].link + "' data-ajax='false'/>";
-    		data += "<p style='margin: 0;'>" + agenda[i].event + "</p></a><p><i>";
-    		data += agenda[i].soort + "</i></p>";
-    		data += "<p style='color: #808080;'>" + agenda[i].datum_tijdstip + "</p></td></tr>";
-			}else{
-			data += "<tr><td><a target='_blank' href='" + agenda[i].link + "' data-ajax='false'/>";
-    		data += "<img id='test1' alt='' style='max-width: 250px; max-height: 165px;' src='" + agenda[i].afbeelding_hr + "'/></td><td>";
-    		data += "<p style='margin: 0;'>" + agenda[i].event + "</p></a><p><i>";
-    		data += agenda[i].soort + "</i></p>";
-    		data += "<p style='color: #808080;'>" + agenda[i].datum_tijdstip + "</p></td></tr>";
-			}
-		}
-  	}
-  	data += "</table>";
-  	var agenda = document.getElementById("agenda1A");
-  	agenda.innerHTML = data;
-  	}
-	}
-	}
-	console.log("asking for home");
-	request.send();
-	}
-	</script>
-	
-	<script>
-	function loadAgendaB() {
-	
-	var request = new XMLHttpRequest();
-	request.open("GET", "json/exp1en_agenda.json", true);
-	request.onreadystatechange = function() {//Call a function when the state changes.
-	if (request.readyState == 4) {
- 		if (request.status == 200 || request.status == 0) {
-  
-  	var agendaB = JSON.parse(request.responseText);
-  	var dat = "<table class='two'>";
-  	for (i = 0; i < agendaB.length; i++) {
-  		if (agendaB[i].rij == "B") {
-			if (agendaB[i].inhoud == "nee") {
-			dat += "<tr><td><a target='_blank' href='" + agendaB[i].link + "' data-ajax='false'/>";
-    		dat += "<p style='font-size: 16px; margin: 0;'>" + agendaB[i].event + "</p></a><p><i>";
-    		dat += agendaB[i].soort + "</i></p>";
-    		dat += "<p style='color: #808080;'>" + agendaB[i].datum_tijdstip + "</p></td></tr>";
-			}else{
-    		dat += "<tr><td><a target='_blank' href='" + agendaB[i].link + "' data-ajax='false'/>";
-    		dat += "<img id='test1' alt='' style='max-width: 250px; max-height: 165px;' src='" + agendaB[i].afbeelding_hr + "'/></td><td>";
-    		dat += "<p style='font-size: 16px; margin: 0;'>" + agendaB[i].event + "</p></a><p><i>";
-    		dat += agendaB[i].soort + "</i></p>";
-    		dat += "<p style='color: #808080;'>" + agendaB[i].datum_tijdstip + "</p></td></tr>";
-			}
-		}
-  	}
-  	dat += "</table>";
-  	var agendaB = document.getElementById("agenda1B");
-  	agendaB.innerHTML = dat;
-  	}
-	}
-	}
-	console.log("asking for home");
-	request.send();
-	}
-	</script>
-	
-	<!-- /<script>
 	var pathAgenda;
 
 	function onFSSuccess(fileSystem) {
@@ -269,7 +193,7 @@ function onDeviceReady() {
 function initAgenda() {
 document.addEventListener("deviceready", onDeviceReady, false);
 }
-</script>-->
+</script>
 </head>
 
 <body onload="loadAgendaA(); loadAgendaB(); initAgenda();">
