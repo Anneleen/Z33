@@ -96,70 +96,7 @@
 	});
 	</script>
 	
-	<script>
-	function loadInfo() {
-	var request = new XMLHttpRequest();
-	request.open("GET", "json/exp2en_info.json", true);
-	request.onreadystatechange = function() {//Call a function when the state changes.
-	if (request.readyState == 4) {
- 		if (request.status == 200 || request.status == 0) {
-  
-  	var info = JSON.parse(request.responseText);
-  	var data = "";
-  	for (i = 0; i < info.length; i++) {
-    	if (info[i].video == "nee") {
-    	data += "<h1>" + info[i].titel + "</h1><h2>" + info[i].datum + "</h2>";
-    	data += "<div class='ui-grid-a my-breakpoint'><div class='ui-block-a'><div class='koloma'>";
-    	data +=  info[i].alinea1 + "<div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'>"; 
-    	data += "<img src='" + info[i].afb1 + "'/><p class='caption'>" + info[i].os_afb1 + "</p></li></ul></div>";
-    	data += "<div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel2 +"</h3>" + info[i].alinea2 + "</div>";
-		data += "<div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel3 +"</h3>";
-		data += "<div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'>";
-		data += "<img src='" + info[i].afb3 + "'/><p class='caption'>" + info[i].os_afb3 + "</p></li></ul></div>" + info[i].alinea3 + "</div></div></div>";
-		data += "<div class='ui-block-b'><div class='kolomb'><div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel4 +"</h3>";
-		data += "<div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'>";
-		data += "<img src='"+ info[i].afb4 + "'/><p class='caption'>" + info[i].os_afb4 + "</p></li></ul></div>" + info[i].alinea4 + "<div>";
-		data += "<div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel5 +"</h3>" + info[i].alinea5 + "</div>";
-		data += "<div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel6 +"</h3>" + info[i].alinea6 + "</div></div></div></div>";
-		}
-		else{
-		data += "<h1>" + info[i].titel + "</h1><h2>" + info[i].datum + "</h2>";
-    	data += "<div class='ui-grid-a my-breakpoint'><div class='ui-block-a'><div class='koloma'>";
-    	data +=  info[i].alinea1 + "<div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'>"; 
-    	data += "<img src='" + info[i].afb1 + "'/><p class='caption'>" + info[i].os_afb1 + "</p></li></ul></div><ul class='tabs'><li><a target='_blank' href='" + info[i].yt + "' data-ajax='false'><img style='width: 35px; height: 23px;' src='images/video.png'/></a></li></ul><br>";
-    	data += "<div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel2 +"</h3>" + info[i].alinea2 + "</div>";
-		data += "<div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel3 +"</h3>";
-		data += "<div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'>";
-		data += "<img src='" + info[i].afb3 + "'/><p class='caption'>" + info[i].os_afb3 + "</p></li></ul></div>" + info[i].alinea3 + "</div></div></div>";
-		data += "<div class='ui-block-b'><div class='kolomb'><div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel4 +"</h3>";
-		data += "<div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'>";
-		data += "<img src='"+ info[i].afb4 + "'/><p class='caption'>" + info[i].os_afb4 + "</p></li></ul></div>" + info[i].alinea4 + "<div>";
-		data += "<div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel5 +"</h3>" + info[i].alinea5 + "</div>";
-		data += "<div data-role='collapsible' data-collapsed='false' class='lijn' data-theme='d' data-mini='true' data-iconpos='right' data-collapsed-icon='arrow-r' data-expanded-icon='arrow-d'>";
-		data += "<h3>" + info[i].titel6 +"</h3>" + info[i].alinea6 + "</div></div></div></div>";
-		}
-	}
-  	data += "";
-  	var info = document.getElementById("expo2");
-  	info.innerHTML = data;
-  	}
-	}
-	}
-	console.log("asking for home");
-	request.send();
-	}
-	</script>
-	
-	<!-- /<script language="javascript" type="text/javascript">
+	<script language="javascript" type="text/javascript">
 	var pathInfo;
 
 	function onFSSuccess(fileSystem) {
@@ -240,7 +177,7 @@
 	function init() {
 	document.addEventListener("deviceready", onDeviceReady, false);
 	}
-	</script> -->
+	</script>
 </head>
 
 <body onload="loadInfo(); init();">
