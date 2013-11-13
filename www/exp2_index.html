@@ -135,13 +135,13 @@
 		+ '\',\''
 		+ index.kunstwerk
 		+ '\',\''
-		+ index.link
-		+ '\',\''
 		+ index.pagina.nationaliteit
 		+ '\',\''
 		+ index.pagina.onderschrift
 		+ '\',\''
 		+ index.pagina.onderschrift1
+		+ '\',\''
+		+ index.pagina.video
 		+ '\',\''
 		+ index.pagina.yt
 		+ '\',\''
@@ -153,12 +153,12 @@
 		+ index.kunstwerk + '</h6></a></li>';
 	}
 
-	function goToIndexDetailPage(indexNaam, indexKunstwerk, indexLink, indexNat, indexOS, indexOSA, indexVideo, indexYT, indexTekst, indexImg){
+	function goToIndexDetailPage(indexNaam, indexKunstwerk, indexNat, indexOS, indexOSA, indexVideo, indexYT, indexTekst, indexImg){
 	if (indexVideo == "ja"){
 	//create the page html template
-	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index_nl.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp2en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
+	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index_nl.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp1en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
 				  + indexNaam + " (" +indexNat + ")</h1><h2>" + indexKunstwerk + "</h2><em>" + indexOS + "</em><div class='ui-grid-a my-breakpoint'><div class='ui-block-a'><div class='koloma'><div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'><img src='"
-				  + indexImg + "' alt=''></img><p class='caption' style='margin-bottom: 12px;'>"+ indexOSA + "<p></li></ul></div><ul class='tabs'><li><a target='_blank' href='" + indexYT +"' data-ajax='false'><img style='width: 35px; height: 23px;' src='images/video.png'/></a></li><br></ul></div></div><div class='ui-block-b'><div class='kolomb'>"
+				  + indexImg + "' alt=''></img><p class='caption' style='margin-bottom: 12px;'>"+ indexOSA + "<p></li></ul></div><ul class='tabs'><li><a target='_blank' href='" + indexYT +"' data-ajax='false'><img src='images/video.png' style='margin-top: -10px;'/></a></li><br></ul></div></div><div class='ui-block-b' style='margin-top: -10px;'><div class='kolomb'>"
 				  + indexTekst +"</div></div></div></div></div>");		
 				  
 	//append the new page to the page container
@@ -168,9 +168,9 @@
 	$.mobile.changePage( indexPage );
 	
 	}else{
-	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index_nl.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp2en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
+	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index_nl.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp1en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
 				  + indexNaam + " (" +indexNat + ")</h1><h2>" + indexKunstwerk + "</h2><em>" + indexOS + "</em><div class='ui-grid-a my-breakpoint'><div class='ui-block-a'><div class='koloma'><div class='callbacks_container'><ul class='rslides callbacks callbacks1'><li id='callbacks1_s0' style='display: list-item; float: left; position: relative; opacity: 1; z-index: 2; -webkit-transition: opacity 500ms ease-in-out; transition: opacity 500ms ease-in-out;'><img src='"
-				  + indexImg + "' alt=''></img><p class='caption' style='margin-bottom: 12px;'>"+ indexOSA + "<p></li></ul></div></div></div><div class='ui-block-b'><div class='kolomb'>"
+				  + indexImg + "' alt=''></img><p class='caption' style='margin-bottom: 12px;'>"+ indexOSA + "<p></li></ul></div></div></div><div class='ui-block-b' style='margin-top: -10px;'><div class='kolomb'>"
 				  + indexTekst +"</div></div></div></div></div>");		
 	
 	//append the new page to the page container
@@ -194,7 +194,7 @@
 	document.addEventListener("deviceready", onDeviceReady, false);
 	}
 
-</script> -->
+</script>
 </head>
 <body>
 
