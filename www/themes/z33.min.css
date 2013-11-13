@@ -3915,62 +3915,6 @@ table tr td p, table tr td i{
 	}
 }*/
 
-/* iPad Mini */
-@media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) {
-	.ui-footer-fixed{
-		bottom:0;
-		width: 100%;
-		height: 56px;
-		background: transparent url("../images/navbar-ipad.png") repeat left bottom;
-		background-size: 856px 56px;
-	}
-}
-
-/* iPad */
-@media (max-device-width: 1024px) and (orientation: landscape) {
-	.ui-navbar{
-		max-height: 56px;
-	}
-}
-@media (max-device-width: 768px) and (orientation: portrait) {
-	.ui-navbar{
-		max-height: 56px;
-	}
-}
-
-/* iPad 2 */
- @media (max-device-width: 1024px) and (orientation: landscape) {
-	.ui-navbar{
-		max-height: 56px;
-	}
-}
-
-@media (max-device-width: 768px) and (orientation: portrait) {
-	.ui-navbar{
-		max-height: 56px;
-	}
-}
-
-/* iPad 3 */
-@media (max-device-width: 1024px) and (orientation: landscape) {
-	.ui-navbar{
-		max-height: 56px;
-	}
-}
-
-@media (max-device-width: 768px) and (orientation: portrait) {
-	.ui-navbar{
-		max-height: 56px;
-	}
-}
-
-/* iPad 4 */
-@media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) {
-	.ui-navbar{
-		max-height: 56px;
-	}
-}
-
 /* Samsung 10.1 inch */
 @media screen and (min-device-width: 1024px) and (orientation: landscape) {
 	#upag, #nupag{
@@ -4242,5 +4186,93 @@ table tr td p, table tr td i{
 	.thumbs{
 	width:100px;
 	margin: 0;
+	}
+}
+
+/* iPhone */
+@media screen and (max-device-width: 480px) {
+	p{
+		font-size: 15px;
+	}
+}
+@media screen and (max-device-width: 320px) {
+	p{
+		font-size: 15px;
+	}
+}
+/* iPhone 3 */
+@media screen and (device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1){
+	p{
+		font-size: 15px;
+	}
+} 
+
+/* iPhone 4 */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+	p{
+		font-size: 15px;
+	}
+} 
+
+/* iPhone 5 */
+@media screen and (device-aspect-ratio: 40/71) {
+	p{
+		font-size: 15px;
+	}
+} 
+
+/* iPad Mini */
+@media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) {
+	.ui-footer-fixed{
+		bottom:0;
+		width: 100%;
+		height: 56px;
+		background: transparent url("../images/navbar-ipad.png") repeat left bottom;
+		background-size: 856px 56px;
+	}
+}
+
+/* iPad */
+@media (max-device-width: 1024px) and (orientation: landscape) {
+	.ui-navbar{
+		max-height: 56px;
+	}
+}
+@media (max-device-width: 768px) and (orientation: portrait) {
+	.ui-navbar{
+		max-height: 56px;
+	}
+}
+
+/* iPad 2 */
+ @media (max-device-width: 1024px) and (orientation: landscape) {
+	.ui-navbar{
+		max-height: 56px;
+	}
+}
+
+@media (max-device-width: 768px) and (orientation: portrait) {
+	.ui-navbar{
+		max-height: 56px;
+	}
+}
+
+/* iPad 3 */
+@media (max-device-width: 1024px) and (orientation: landscape) {
+	.ui-navbar{
+		max-height: 56px;
+	}
+}
+
+@media (max-device-width: 768px) and (orientation: portrait) {
+	.ui-navbar{
+		max-height: 56px;
+	}
+}
+
+/* iPad 4 */
+@media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) {
+	.ui-navbar{
+		max-height: 56px;
 	}
 }
