@@ -134,17 +134,15 @@
 		+ '\',\''
 		+ index.kunstwerk
 		+ '\',\''
-		+ index.link
-		+ '\',\''
 		+ index.pagina.nationaliteit
 		+ '\',\''
 		+ index.pagina.onderschrift
 		+ '\',\''
 		+ index.pagina.onderschrift1
 		+ '\',\''
-		+ index.pagina.yt
-		+ '\',\''
 		+ index.pagina.video
+		+ '\',\''
+		+ index.pagina.yt
 		+ '\',\''
 		+ index.pagina.tekst
 		+ '\',\''
@@ -154,7 +152,7 @@
 		+ index.kunstwerk + '</h6></a></li>';
 	}
 
-	function goToIndexDetailPage(indexNaam, indexKunstwerk, indexLink, indexNat, indexOS, indexOSA, indexVideo, indexYT, indexTekst, indexImg){
+	function goToIndexDetailPage(indexNaam, indexKunstwerk, indexNat, indexOS, indexOSA, indexVideo, indexYT, indexTekst, indexImg){
 	if (indexVideo == "ja"){
 	//create the page html template
 	var indexPage = $("<div data-role='page' data-url=dummyUrl><div data-role='header' class='ui-header ui-bar-a' role='banner' data-position='fixed' data-tap-toggle='false'><div class=hd><a href='index_nl.html' data-ajax='false' title='Z33' class='Z33'><span style='display:none;' data-position='fixed'>Z33</span></a><div class='taal'><ul><li class'actief'>NL</li><li>|</li><li><a href='exp1en_index.html' data-ajax='false'>EN</a></li></ul></div></div></div><div data-role='content'><h1>"
