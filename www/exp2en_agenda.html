@@ -112,13 +112,13 @@
   		if (agenda[i].rij == "A") {
 			if (agenda[i].inhoud == "nee") {
     		data += "<tr><td><a target='_blank' href='" + agenda[i].link + "' data-ajax='false'/>";
-    		data += "<p style='margin: 0;'>" + agenda[i].event + "</p></a><p><i>";
+    		data += "<p style='font-size: 15px; margin: 0;'>" + agenda[i].event + "</p></a><p><i>";
     		data += agenda[i].soort + "</i></p>";
     		data += "<p style='color: #808080;'>" + agenda[i].datum_tijdstip + "</p></td></tr>";
 			}else{
 			data += "<tr><td><a target='_blank' href='" + agenda[i].link + "' data-ajax='false'/>";
     		data += "<img id='test1' style='max-width: 250px; max-height: 165px;' alt='' src='" + agenda[i].afbeelding_hr + "'/></td><td>";
-    		data += "<p style='margin: 0;'>" + agenda[i].event + "</p></a><p><i>";
+    		data += "<p style='font-size: 15px; margin: 0;'>" + agenda[i].event + "</p></a><p><i>";
     		data += agenda[i].soort + "</i></p>";
     		data += "<p style='color: #808080;'>" + agenda[i].datum_tijdstip + "</p></td></tr>";
 			}
@@ -148,13 +148,13 @@
   		if (agendaB[i].rij == "B") {
 			if (agendaB[i].inhoud == "nee") {
 			dat += "<tr><td><a target='_blank' href='" + agendaB[i].link + "' data-ajax='false'/>";
-    		dat += "<p style='font-size: 16px; margin: 0;'>" + agendaB[i].event + "</p></a><p><i>";
+    		dat += "<p style='font-size: 15px; margin: 0;'>" + agendaB[i].event + "</p></a><p><i>";
     		dat += agendaB[i].soort + "</i></p>";
     		dat += "<p style='color: #808080;'>" + agendaB[i].datum_tijdstip + "</p></td></tr>";
 			}else{
     		dat += "<tr><td><a target='_blank' href='" + agendaB[i].link + "'  data-ajax='false'/>";
     		dat += "<img id='test1' alt='' style='max-width: 250px; max-height: 165px;' src='" + agendaB[i].afbeelding_hr + "'/></td><td>";
-    		dat += "<p style='font-size: 16px; margin: 0;'>" + agendaB[i].event + "</p></a><p><i>";
+    		dat += "<p style='font-size: 15px; margin: 0;'>" + agendaB[i].event + "</p></a><p><i>";
     		dat += agendaB[i].soort + "</i></p>";
     		dat += "<p style='color: #808080;'>" + agendaB[i].datum_tijdstip + "</p></td></tr>";
 			}
