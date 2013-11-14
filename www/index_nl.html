@@ -12,41 +12,6 @@
 	<script type="text/javascript" src="jquery/video.js"></script>
 	<script type="text/javascript" src="jquery/video_exp1.js"></script>
 	
-	<script src="jquery/jquery.imagesloaded.min.js"></script>
-	<script src="jquery/imgcache.js"></script>
-	
-	<script>
-		var startTest = function() {
-			console.log("poep");
-			$('body').imagesLoaded(function($images, $proper, $broken ) {
-
-				// see console output for debug info
-				ImgCache.options.debug = true;
-				ImgCache.options.usePersistentCache = true;
-	
-				ImgCache.init(function() {
-					// 1. cache images
-					for (var i = 0; i < $proper.length; i++) {
-						ImgCache.cacheFile($($proper[i]).attr('src'));
-					}
-					// 2. broken images get replaced
-					for (var i = 0; i < $broken.length; i++) {
-						ImgCache.useCachedFile($($broken[i]));
-					}
-
-				});
-			});
-		};
-
-		if (typeof(cordova) !== 'undefined') {
-			// cordova test
-			document.addEventListener('deviceready', startTest, false);
-		} else {
-			// normal browser test
-			$(document).ready(startTest);
-		}
-	</script>
-	
 	<link rel="stylesheet" href="themes/responsiveslide.css"/>
 	<script src="jquery/responsiveslides.min.js"></script>
 	<script>
@@ -85,19 +50,23 @@
 	</script>
 	
 	<script>
-	$('div.ui-page').live("swipeleft", function(){
-	var nextpage = $(this).next('div[data-role="page"]');
-	if (nextpage.length > 0) {
-	$.mobile.changePage(nextpage, {transition: "slide"}, false, true);
-	}
+
+	$('div.ui-page').live("swipeleft", function () {
+		var nextpage = $(this).next('div[data-role="page"]');
+		if (nextpage.length > 0) {
+			$.mobile.changePage(nextpage, "slide", false, true);
+		}
 	});
-	$('div.ui-page').live("swiperight", function(){
-	var prevpage = $(this).prev('div[data-role="page"]');
-	if (prevpage.length > 0) {
-	$.mobile.changePage(prevpage, {transition: "slide",
-	reverse: true}, true, true);
-	}
+	$('div.ui-page').live("swiperight", function () {
+		var prevpage = $(this).prev('div[data-role="page"]');
+		if (prevpage.length > 0) {
+			$.mobile.changePage(prevpage, {
+				transition: "slide",
+				reverse: true
+			}, true, true);
+		}
 	});
+
 	</script>
 	
 	<script>
