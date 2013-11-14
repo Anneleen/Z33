@@ -29,7 +29,7 @@ var ImgCache = {
 };
 
 (function($) {
-
+	console.log("poep");
 	var old_src_attr = 'data-old-src';
 
 	/** Helpers *****************************************************************/
