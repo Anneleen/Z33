@@ -4230,8 +4230,8 @@ table tr td p, table tr td i{
 		background: transparent url("../images/navbar-ipad.png") repeat left bottom;
 		background-size: 856px 56px;
 	}
-	.ui-grid-c{
-		margin-top: 5px;
+	ul.ui-grid-c {
+    margin-top: 4px;
 	}
 }
 
