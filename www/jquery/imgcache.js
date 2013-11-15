@@ -17,7 +17,7 @@
 var ImgCache = {
 	// options to override before using the library (but after loading this script!)
 	options: {
-		debug: false,			/* write log (to console)? */
+		debug: true,			/* write log (to console)? */
 		localCacheFolder: 'imgcache',	/* name of the cache folder */
 		useDataURI: false,		/* use src="data:.."? otherwise will use src="filesystem:.." */
 		chromeQuota: 10*1024*1024,	/* allocated cache space : here 10Mb */
