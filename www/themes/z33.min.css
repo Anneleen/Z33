@@ -4233,6 +4233,9 @@ table tr td p, table tr td i{
 	ul.ui-grid-c {
     margin-top: 4px;
 	}
+	#a, #ts, #kw, #z33, #up{
+	margin: 25px 0 0 0;
+	}
 }
 
 /* iPad */
