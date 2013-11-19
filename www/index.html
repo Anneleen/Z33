@@ -135,7 +135,7 @@
 					var ft = new FileTransfer();
 					var dlPath = DATADIR.fullPath + "/" + res[i];
 					ft.download("http://www.mllsdemode.be/Z33/" + escape(res[i]), dlPath, function(e){
-						window.location = "index_nl.html"
+						window.location = "exp1_index.html"
 						console.log("Successful download of "+e.fullPath);
 					}, onError);
 				}
@@ -155,7 +155,7 @@
 		function offlineReady() {
 			var networkState = navigator.network.connection.type;
 			if (networkState == Connection.UNKNOWN || networkState == Connection.NONE || networkState == Connection.ETHERNET || networkState == Connection.CELL_2G){
-				window.location = "index_nl.html";
+				window.location = "exp1_index.html";
 			}
 		}
 	</script>
