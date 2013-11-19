@@ -96,6 +96,22 @@
 	});
 	</script>
 	
+	<script>
+	$(document).bind('pageinit', function() {
+	/**
+	* you can't use css to position the element
+	* because the window height is a variant,
+	* so we use this function to calculate
+	*/
+	$('#popupPanel').on({
+		popupbeforeposition: function() {
+			var h = $(window).height();
+			$('#popupPanel').css('height', h);
+		}
+	});
+	});
+	</script>
+	
 	<script language="javascript" type="text/javascript">
 	var pathAgenda;
 	var pathPanel;
