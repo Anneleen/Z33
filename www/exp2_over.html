@@ -86,7 +86,6 @@
 	var pathPanel;
 
 	function onFSSuccess(fileSystem) {
-	pathInfo = fileSystem.root.fullPath+'/be.z33.mobile/exp2_info.json';
 	pathPanel = fileSystem.root.fullPath+'/be.z33.mobile/home.json';
     fileSystem.root.getDirectory("be.z33.mobile",{create:true},loadPanel,onError);
 	}

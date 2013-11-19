@@ -65,12 +65,75 @@
 			$.mobile.metaViewportContent = 'width=device-width';
 		});		
 	</script>
+	
+	<script>
+	$(document).bind('pageinit', function() {
+	/**
+	* you can't use css to position the element
+	* because the window height is a variant,
+	* so we use this function to calculate
+	*/
+	$('#popupPanel').on({
+		popupbeforeposition: function() {
+			var h = $(window).height();
+			$('#popupPanel').css('height', h);
+		}
+	});
+	});
+	</script>
+	
+	<script language="javascript" type="text/javascript">
+	var pathPanel;
+
+	function onFSSuccess(fileSystem) {
+	pathPanel = fileSystem.root.fullPath+'/be.z33.mobile/home_en.json';
+    fileSystem.root.getDirectory("be.z33.mobile",{create:true},loadPanel,onError);
+	}
+	
+	function loadPanel(){
+	var request = new XMLHttpRequest();
+	request.open("GET", pathPanel, true);
+	request.onreadystatechange = function() {//Call a function when the state changes.
+	if (request.readyState == 4) {
+ 		if (request.status == 200 || request.status == 0) {
+  	var panel = JSON.parse(request.responseText);
+  	var data = "";
+  	for (i = 0; i < panel.length; i++) {
+    	data += "<a href='" + panel[i].link + "' data-ajax='false'/>";
+    	data += "<p class='pan'>" + panel[i].expo + "</p></a>";
+		}
+  	data += "";
+  	var panel = document.getElementById("popupPanel");
+  	panel.innerHTML = data;
+  	}
+	}
+	}
+	console.log("asking for panel");
+	request.send();
+	}
+
+	function onError(e){
+    console.log("ERROR");
+    console.log(JSON.stringify(e));
+	}
+
+	function onDeviceReady() {
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);
+	}    
+
+	function init() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+	}
+	</script>
 </head> 
-<body> 
+<body onload="init();"> 
 <div data-role="page">
 <div data-theme="a" id="overz33">
 
 	<div data-role="header" class="ui-header ui-bar-a" role="banner" data-position="fixed" data-tap-toggle="false">
+	<a href="#popupPanel" data-rel="popup" data-transition="slide" data-position-to="window" data-role="button">Expo</a>	
+	<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">	 
+	</div>
 	<div class="hd">
 		<a href="index_en.html" data-ajax="false" title="Z33" class="Z33_en"><span style="display:none;" data-position="fixed">Z33</span></a>
 	<div class="taal">
