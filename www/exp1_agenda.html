@@ -84,44 +84,6 @@
 	}
 	});
 	</script>
-    
-	<script>
-	function loadAgendaA() {
-	
-	var request = new XMLHttpRequest();
-	request.open("GET", "json/exp1_agenda.json", true);
-	request.onreadystatechange = function() {//Call a function when the state changes.
-	if (request.readyState == 4) {
- 		if (request.status == 200 || request.status == 0) {
-  
-  	var agenda = JSON.parse(request.responseText);
-  	var data = "<table class='one'>";
-  	for (i = 0; i < agenda.length; i++) {
-  		if (agenda[i].rij == "A") {
-			if (agenda[i].inhoud == "nee") {
-    		data += "<tr><td><a target='_blank' href='" + agenda[i].link + "' data-ajax='false'/>";
-    		data += "<p style='font-size: 15px; margin: 0;'>" + agenda[i].event + "</p></a><p><i>";
-    		data += agenda[i].soort + "</i></p>";
-    		data += "<p style='color: #808080;'>" + agenda[i].datum_tijdstip + "</p></td></tr>";
-			}else{
-			data += "<tr><td><a target='_blank' href='" + agenda[i].link + "' data-ajax='false'/>";
-    		data += "<img id='test1' alt='' style='max-width: 250px; max-height: 165px;' src='" + agenda[i].afbeelding_hr + "'/></td><td>";
-    		data += "<p style='font-size: 15px; margin: 0;'>" + agenda[i].event + "</p></a><p><i>";
-    		data += agenda[i].soort + "</i></p>";
-    		data += "<p style='color: #808080;'>" + agenda[i].datum_tijdstip + "</p></td></tr>";
-			}
-		}
-  	}
-  	data += "</table>";
-  	var agenda = document.getElementById("agenda1A");
-  	agenda.innerHTML = data;
-  	}
-	}
-	}
-	console.log("asking for home");
-	request.send();
-	}
-	</script>
 	
 	<script>
 	$(document).on('click', 'a[href^=http], a[href^=https]', function(e){
