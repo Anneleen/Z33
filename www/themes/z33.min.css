@@ -3899,6 +3899,14 @@ figcaption{
 	font-size: 14px;
 	width: 100%;
 }
+
+.ui-mobile a img.agenda{
+  display: block;
+  padding: 0;
+  background: url("../images/oinl-s.jpg") no-repeat center center;
+  background-size: 100% auto;
+  }
+	
 /*GRID*/
 
 table.one{
