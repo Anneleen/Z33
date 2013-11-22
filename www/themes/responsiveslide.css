@@ -38,14 +38,14 @@
   padding: 0;
   }
   
-.callbacks img.indx-en {
+.indx-en {
   display: block;
   padding: 0;
   background: url("../images/oien-l.jpg") no-repeat center center;
   background-size: 100% auto;
   }
 
-.callbacks img.indx-nl {
+.indx-nl {
   display: block;
   padding: 0;
   background: url("../images/oien-l.jpg") no-repeat center center;
