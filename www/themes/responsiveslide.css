@@ -36,30 +36,9 @@
   width: 100%;
   border: 0;
   padding: 0;
+  background: url("../images/oinl-l.jpg") no-repeat center center;
+  background-size: 100% auto;
   }
-.callbacks img#nl{
-	display: block;
-	position: relative;
-	z-index: 1;
-	height: auto;
-	width: 100%;
-	border: 0;
-	padding: 0;
-	background: url("../images/oinl-l.jpg") no-repeat center center;
-	background-size: 100% auto;
-	}
-	
-.callbacks img#en{
-	display: block;
-	position: relative;
-	z-index: 1;
-	height: auto;
-	width: 100%;
-	border: 0;
-	padding: 0;
-	background: url("../images/oien-l.jpg") no-repeat center center;
-	background-size: 100% auto;
-	}
 
 .callbacks .caption {
   display: block;
