@@ -36,7 +36,7 @@
   width: 100%;
   border: 0;
   padding: 0;
-  url("../images/oien-l.jpg") no-repeat left top;
+  background: url("../images/oien-l.jpg") no-repeat left top;
   }
 
 .callbacks .caption {
