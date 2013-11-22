@@ -8,41 +8,7 @@
 	<link rel="stylesheet" href="themes/z33.min.css"/>
 	<script type="text/javascript" src="jquery/jquery-1.8.2.min.js"></script>
 	<script type="text/javascript" src="jquery/jquery.mobile-1.2.0.min.js"></script>
-	<script type="text/javascript" src="phonegap.js"></script> 
-	
-	<script src="jquery/jquery.imagesloaded.min.js"></script>
-	<script src="jquery/imgcache.js"></script>
-	
-	<script>
-		var startTest = function() {
-			$('body').imagesLoaded(function($images, $proper, $broken ) {
-
-				// see console output for debug info
-				ImgCache.options.debug = true;
-				ImgCache.options.usePersistentCache = true;
-	
-				ImgCache.init(function() {
-					// 1. cache images
-					for (var i = 0; i < $proper.length; i++) {
-						ImgCache.cacheFile($($proper[i]).attr('src'));
-					}
-					// 2. broken images get replaced
-					for (var i = 0; i < $broken.length; i++) {
-						ImgCache.useCachedFile($($broken[i]));
-					}
-
-				});
-			});
-		};
-
-		if (typeof(cordova) !== 'undefined') {
-			// cordova test
-			document.addEventListener('deviceready', startTest, false);
-		} else {
-			// normal browser test
-			$(document).ready(startTest);
-		}
-	</script>
+	<script type="text/javascript" src="phonegap.js"></script>
 	
 	<link rel="stylesheet" href="themes/responsiveslide.css"/>
 	<script src="jquery/responsiveslides.min.js"></script>
