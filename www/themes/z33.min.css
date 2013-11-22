@@ -3906,6 +3906,13 @@ figcaption{
   background: url("../images/oinl-s.jpg") no-repeat center center;
   background-size: 100% auto;
   }
+ 
+.ui-mobile a img.agenda-en{
+  display: block;
+  padding: 0;
+  background: url("../images/oien-s.jpg") no-repeat center center;
+  background-size: 100% auto;
+  }
 	
 /*GRID*/
 
