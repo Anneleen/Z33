@@ -3914,7 +3914,7 @@ figcaption{
   background-size: 100% auto;
   }
 
-img.ui-li-thumb .ind{
+img.ui-li-thumb{
 	display: block;
 	padding: 0;
 	background: url("../images/oinl-xs.jpg") no-repeat center center;
