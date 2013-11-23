@@ -3913,6 +3913,13 @@ figcaption{
   background: url("../images/oien-s.jpg") no-repeat center center;
   background-size: 100% auto;
   }
+
+img.ui-li-thumb .ind{
+	display: block;
+	padding: 0;
+	background: url("../images/oinl-xs.jpg") no-repeat center center;
+	background-size: 100% auto;
+  }
 	
 /*GRID*/
 
