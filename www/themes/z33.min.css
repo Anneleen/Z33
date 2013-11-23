@@ -3919,6 +3919,8 @@ img.ui-li-thumb{
 	padding: 0;
 	background: url("../images/oinl-l.jpg") no-repeat center center;
 	background-size: 100% auto;
+	max-height: 91px;
+	max-width: 137px; 
   }
 	
 /*GRID*/
