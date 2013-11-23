@@ -3920,6 +3920,10 @@ img.ui-li-thumb{
 	background: url("../images/oinl-l.jpg") no-repeat center center;
 	background-size: 137px 91px;
   }
+.ui-li-thumb{
+	width: 137px;
+	height: 91px;
+}
 	
 /*GRID*/
 
